@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>The bird encyclopedia</title>
+</head>
+
+<body>
+  <h1>Task List</h1>
+
+  <table>
+    <tr>
+      <th>Task Name</th>
+      <th>Description</th>
+    </tr>
+    <td>make a list</td>
+    <td>Prepare a list of tasks</td>
+    </tr>
+  </table>
+  <br/>
+
+
+  <form action="/task" method="post">
+    Task Name:
+    <input type="text" name="name">
+    <br/> Description:
+    <input type="text" name="description">
+    <br/>
+    <input type="submit" value="Submit">
+  </form>
+
+
+  <script>
+    taskTable = document.querySelector("table")
+
+    fetch("/task")
+      .then(response => response.json())
+      .then(taskList => {
+        //Once we fetch the list, we iterate over it
+        taskList.forEach(task => {
+          // Create the table row
+          row = document.createElement("tr")
+
+          // Create the table data elements for the species and description columns
+          taskName = document.createElement("td")
+          taskName.innerHTML = task.name
+          description = document.createElement("td")
+          description.innerHTML = task.description
+
+          // Add the data elements to the row
+          row.appendChild(taskName)
+          row.appendChild(description)
+          // Finally, add the row element to the table itself
+          taskTable.appendChild(row)
+        })
+      })
+  </script>
+</body>
+
+</html>
