@@ -62,7 +62,7 @@ func TestForInvalidAppSearch(t *testing.T) {
 	InitStore(db)
 	err = testApplication.GetApplication("")
 
-	if err != nil {
+	if err == nil {
 
 		t.Errorf("Should have errored because name is invalid.")
 	} else {

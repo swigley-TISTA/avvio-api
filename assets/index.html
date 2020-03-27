@@ -23,7 +23,7 @@
   <br/>
 
 
-  <form action="/task" method="post">
+  <form action="/api/v1/task" method="post">
     Task Name:
     <input type="text" name="name">
     <br/> Description:
@@ -36,7 +36,7 @@
   <script>
     taskTable = document.querySelector("table")
 
-    fetch("/task")
+    fetch("/api/v1/task")
       .then(response => response.json())
       .then(taskList => {
         //Once we fetch the list, we iterate over it

@@ -63,7 +63,7 @@ func TestForInvalidPipelineSearch(t *testing.T) {
 	InitStore(db)
 	err = testPipeline.GetPipeline("")
 
-	if err != nil {
+	if err == nil {
 
 		t.Errorf("Should have errored because name is invalid.")
 	} else {

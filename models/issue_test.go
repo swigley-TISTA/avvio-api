@@ -64,7 +64,7 @@ func TestForInvalidIssueSearch(t *testing.T) {
 	InitStore(db)
 	err = testIssue.GetIssue("")
 
-	if err != nil {
+	if err == nil {
 
 		t.Errorf("Should have errored because name is invalid.")
 	} else {

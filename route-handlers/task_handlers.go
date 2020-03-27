@@ -39,7 +39,7 @@ func GetTaskHandler(w http.ResponseWriter, r *http.Request) {
 
 	 outTask := []models.Task{}
 	 for _, t := range tasks {
-		 if(strings.HasPrefix(t.Name, namePrefix)) {
+		 if strings.HasPrefix(t.Name, namePrefix) {
 			 outTask = append(outTask, t)
 		 }
 	 }

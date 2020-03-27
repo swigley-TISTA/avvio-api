@@ -1,0 +1,238 @@
+*3
+$3
+set
+$19
+application:AppName
+$86
+{"name":"AppName","ProjectName":"ProjectName","description":"A really useful project"}
+*3
+$3
+set
+$3
+foo
+$3
+bar
+*3
+$3
+set
+$15
+issue:IssueName
+$86
+{"name":"IssueName","ApplicationName":"AppName","description":"A really severe issue"}
+*3
+$3
+set
+$21
+pipeline:PipelineName
+$102
+{"name":"PipelineName","ApplicationName":"ApplicationName","description":"A really reliable pipeline"}
+*3
+$3
+set
+$11
+project:foo
+$45
+{"name":"foo","description":"bar","Teams":[]}
+*3
+$3
+set
+$8
+task:foo
+$34
+{"name":"foo","description":"bar"}
+*3
+$3
+set
+$8
+team:Tom
+$49
+{"name":"Tom","description":"A really great guy"}
+*3
+$3
+set
+$15
+team:The A Team
+$55
+{"name":"The A Team","description":"A really fun team"}
+*3
+$3
+set
+$19
+application:AppName
+$86
+{"name":"AppName","ProjectName":"ProjectName","description":"A really useful project"}
+*3
+$3
+set
+$3
+foo
+$3
+bar
+*3
+$3
+set
+$15
+issue:IssueName
+$86
+{"name":"IssueName","ApplicationName":"AppName","description":"A really severe issue"}
+*3
+$3
+set
+$21
+pipeline:PipelineName
+$102
+{"name":"PipelineName","ApplicationName":"ApplicationName","description":"A really reliable pipeline"}
+*3
+$3
+set
+$11
+project:foo
+$45
+{"name":"foo","description":"bar","Teams":[]}
+*3
+$3
+set
+$8
+task:foo
+$34
+{"name":"foo","description":"bar"}
+*3
+$3
+set
+$8
+team:Tom
+$49
+{"name":"Tom","description":"A really great guy"}
+*3
+$3
+set
+$15
+team:The A Team
+$55
+{"name":"The A Team","description":"A really fun team"}
+*3
+$3
+set
+$11
+project:foo
+$45
+{"name":"foo","description":"bar","Teams":[]}
+*3
+$3
+set
+$21
+pipeline:PipelineName
+$102
+{"name":"PipelineName","ApplicationName":"ApplicationName","description":"A really reliable pipeline"}
+*3
+$3
+set
+$19
+application:AppName
+$86
+{"name":"AppName","ProjectName":"ProjectName","description":"A really useful project"}
+*3
+$3
+set
+$3
+foo
+$3
+bar
+*3
+$3
+set
+$15
+issue:IssueName
+$86
+{"name":"IssueName","ApplicationName":"AppName","description":"A really severe issue"}
+*3
+$3
+set
+$21
+pipeline:PipelineName
+$102
+{"name":"PipelineName","ApplicationName":"ApplicationName","description":"A really reliable pipeline"}
+*3
+$3
+set
+$11
+project:foo
+$45
+{"name":"foo","description":"bar","Teams":[]}
+*3
+$3
+set
+$8
+task:foo
+$34
+{"name":"foo","description":"bar"}
+*3
+$3
+set
+$8
+team:Tom
+$49
+{"name":"Tom","description":"A really great guy"}
+*3
+$3
+set
+$15
+team:The A Team
+$55
+{"name":"The A Team","description":"A really fun team"}
+*3
+$3
+set
+$19
+application:AppName
+$86
+{"name":"AppName","ProjectName":"ProjectName","description":"A really useful project"}
+*3
+$3
+set
+$3
+foo
+$3
+bar
+*3
+$3
+set
+$15
+issue:IssueName
+$86
+{"name":"IssueName","ApplicationName":"AppName","description":"A really severe issue"}
+*3
+$3
+set
+$21
+pipeline:PipelineName
+$102
+{"name":"PipelineName","ApplicationName":"ApplicationName","description":"A really reliable pipeline"}
+*3
+$3
+set
+$11
+project:foo
+$45
+{"name":"foo","description":"bar","Teams":[]}
+*3
+$3
+set
+$8
+task:foo
+$34
+{"name":"foo","description":"bar"}
+*3
+$3
+set
+$8
+team:Tom
+$49
+{"name":"Tom","description":"A really great guy"}
+*3
+$3
+set
+$15
+team:The A Team
+$55
+{"name":"The A Team","description":"A really fun team"}
