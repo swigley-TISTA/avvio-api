@@ -60,6 +60,7 @@ import (
 // to instantiate and test the router outside of the main function
 func newRouter() *mux.Router {
 	r := mux.NewRouter()
+	var api = r.PathPrefix("/api/v1").Subrouter()
 	r.HandleFunc("/hello", handler).Methods("GET")
 
 	// Declare the static file directory and point it to the directory we just made
@@ -88,9 +89,9 @@ func newRouter() *mux.Router {
 	httpSwagger.URL("/docs/doc.json")
 	r.PathPrefix("/documentation/").Handler(httpSwagger.WrapHandler)
 
-	r.HandleFunc("/task/{id}", route_handlers.GetTaskHandler).Methods("GET")
-	r.HandleFunc("/task", route_handlers.GetTaskHandler).Methods("GET")
-	r.HandleFunc("/task", route_handlers.CreateTaskHandler).Methods( "POST")
+	api.HandleFunc("/task/{id}", route_handlers.GetTaskHandler).Methods("GET")
+	api.HandleFunc("/task", route_handlers.GetTaskHandler).Methods("GET")
+	api.HandleFunc("/task", route_handlers.CreateTaskHandler).Methods( "POST")
 
 	return r
 }

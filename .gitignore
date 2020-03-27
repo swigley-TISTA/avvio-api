@@ -2,3 +2,4 @@
 docs/*
 *.lock
 vendor
+models/data.db
