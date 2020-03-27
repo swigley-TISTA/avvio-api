@@ -11,7 +11,18 @@ import (
 
 var applications []models.Application
 
-
+// GetApplicationHandler godoc
+// @Summary Create applications
+// @Description get applications
+// @Accept  json
+// @Produce  json
+// @Param name path string false "search by name"
+// @Success 200 {array} models.Application
+// @Header 200 {string} Token "qwerty"
+// @Failure 400 {object} models.HTTPError
+// @Failure 404 {object} models.HTTPError
+// @Failure 500 {object} models.HTTPError
+// @Router /application [get]
 func GetApplicationHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id := params["id"]
@@ -47,6 +58,18 @@ func filterApplicationsByNamePrefix(applications []models.Application, namePrefi
 
 }
 
+// CreateApplicationHandler godoc
+// @Summary Create applications
+// @Description create applications
+// @Accept  json
+// @Produce  json
+// @Param task body models.Application false "application"
+// @Success 200
+// @Header 200 {string} Token "qwerty"
+// @Failure 400 {object} models.HTTPError
+// @Failure 404 {object} models.HTTPError
+// @Failure 500 {object} models.HTTPError
+// @Router /application [post]
 func CreateApplicationHandler(w http.ResponseWriter, r *http.Request) {
 
 	application := models.Application{}

@@ -11,7 +11,18 @@ import (
 
 var teamMembers []models.TeamMember
 
-
+// GetTeamMemberHandler godoc
+// @Summary Create teamMembers
+// @Description get teamMembers
+// @Accept  json
+// @Produce  json
+// @Param name path string false "search by name"
+// @Success 200 {array} models.TeamMember
+// @Header 200 {string} Token "qwerty"
+// @Failure 400 {object} models.HTTPError
+// @Failure 404 {object} models.HTTPError
+// @Failure 500 {object} models.HTTPError
+// @Router /teamMember [get]
 func GetTeamMemberHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id := params["id"]
@@ -47,6 +58,18 @@ func filterTeamMembersByNamePrefix(teamMembers []models.TeamMember, namePrefix s
 
 }
 
+// CreateTeamMemberHandler godoc
+// @Summary Create teamMember
+// @Description create teamMember
+// @Accept  json
+// @Produce  json
+// @Param teamMember body models.TeamMember false "teamMember"
+// @Success 200
+// @Header 200 {string} Token "qwerty"
+// @Failure 400 {object} models.HTTPError
+// @Failure 404 {object} models.HTTPError
+// @Failure 500 {object} models.HTTPError
+// @Router /teamMember [post]
 func CreateTeamMemberHandler(w http.ResponseWriter, r *http.Request) {
 
 	teamMember := models.TeamMember{}

@@ -12,6 +12,18 @@ import (
 var teams []models.Team
 
 
+// GetTeamHandler godoc
+// @Summary Create teams
+// @Description get teams
+// @Accept  json
+// @Produce  json
+// @Param name path string false "search by name"
+// @Success 200 {array} models.Team
+// @Header 200 {string} Token "qwerty"
+// @Failure 400 {object} models.HTTPError
+// @Failure 404 {object} models.HTTPError
+// @Failure 500 {object} models.HTTPError
+// @Router /team [get]
 func GetTeamHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id := params["id"]
@@ -47,6 +59,18 @@ func filterTeamsByNamePrefix(teams []models.Team, namePrefix string) []models.Te
 
 }
 
+// CreateTeamHandler godoc
+// @Summary Create teams
+// @Description create teams
+// @Accept  json
+// @Produce  json
+// @Param team body models.Team false "team"
+// @Success 200
+// @Header 200 {string} Token "qwerty"
+// @Failure 400 {object} models.HTTPError
+// @Failure 404 {object} models.HTTPError
+// @Failure 500 {object} models.HTTPError
+// @Router /team [post]
 func CreateTeamHandler(w http.ResponseWriter, r *http.Request) {
 
 	team := models.Team{}

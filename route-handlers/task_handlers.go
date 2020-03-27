@@ -1,17 +1,29 @@
 package route_handlers
 
 import (
+	"avvio-api/models"
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
 	"net/http"
 	"strings"
-	"avvio-api/models"
 )
 
 var tasks []models.Task
 
 
+// GetTaskHandler godoc
+// @Summary Create tasks
+// @Description get tasks
+// @Accept  json
+// @Produce  json
+// @Param name path string false "search by name"
+// @Success 200 {array} models.Task
+// @Header 200 {string} Token "qwerty"
+// @Failure 400 {object} models.HTTPError
+// @Failure 404 {object} models.HTTPError
+// @Failure 500 {object} models.HTTPError
+// @Router /task [get]
 func GetTaskHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id := params["id"]
@@ -47,6 +59,18 @@ func GetTaskHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// CreateTaskHandler godoc
+// @Summary Create tasks
+// @Description create tasks
+// @Accept  json
+// @Produce  json
+// @Param task body models.Task false "task"
+// @Success 200
+// @Header 200 {string} Token "qwerty"
+// @Failure 400 {object} models.HTTPError
+// @Failure 404 {object} models.HTTPError
+// @Failure 500 {object} models.HTTPError
+// @Router /task [post]
 func CreateTaskHandler(w http.ResponseWriter, r *http.Request) {
 
 	task := models.Task{}

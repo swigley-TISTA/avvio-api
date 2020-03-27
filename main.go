@@ -60,12 +60,28 @@ import (
 // to instantiate and test the router outside of the main function
 func newRouter() *mux.Router {
 	r := mux.NewRouter()
-	var api = r.PathPrefix("/api/v1").Subrouter()
+	var api = r.PathPrefix("/api").Subrouter()
+	var api1 = api.PathPrefix("/v1").Subrouter()
+	api.NotFoundHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusNotFound)
+	})
+	/*
+	//Use to enable authentication
+	api.Use(func(next http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			if r.Header.Get("x-auth-token") != "admin" {
+				w.WriteHeader(http.StatusUnauthorized)
+				return
+			}
+			log.Println(r.RequestURI)
+			next.ServeHTTP(w, r)
+		})
+	})
+	*/
 	r.HandleFunc("/hello", handler).Methods("GET")
 
 	// Declare the static file directory and point it to the directory we just made
 	staticFileDirectory := http.Dir("./assets/")
-	docFileDirectory := http.Dir("./docs")
 
 	// Declare the handler, that routes requests to their respective filename.
 	// The fileserver is wrapped in the `stripPrefix` method, because we want to
@@ -76,23 +92,45 @@ func newRouter() *mux.Router {
 	docs.SwaggerInfo.Title = "AVVIO Swagger API"
 	docs.SwaggerInfo.Description = "This is the avvio API server."
 	docs.SwaggerInfo.Version = "1.0"
-	docs.SwaggerInfo.Host = "localhost"
-	docs.SwaggerInfo.BasePath = "/documentation"
+	docs.SwaggerInfo.Host = "localhost:8080"
+	docs.SwaggerInfo.BasePath = "/api/v1"
 	docs.SwaggerInfo.Schemes = []string{"http", "https"}
 
 	staticFileHandler := http.StripPrefix("/assets/", http.FileServer(staticFileDirectory))
-	docFileHandler := http.StripPrefix("/documentation/doc.json", http.FileServer(docFileDirectory))
+
 	// The "PathPrefix" method acts as a matcher, and matches all routes starting
 	// with "/assets/", instead of the absolute route itself
-	r.PathPrefix("/docs").Handler(docFileHandler).Methods("GET")
 	r.PathPrefix("/assets/").Handler(staticFileHandler).Methods("GET")
 	httpSwagger.URL("/docs/doc.json")
 	r.PathPrefix("/documentation/").Handler(httpSwagger.WrapHandler)
 
-	api.HandleFunc("/task/{id}", route_handlers.GetTaskHandler).Methods("GET")
-	api.HandleFunc("/task", route_handlers.GetTaskHandler).Methods("GET")
-	api.HandleFunc("/task", route_handlers.CreateTaskHandler).Methods( "POST")
+	api1.HandleFunc("/application/{id}", route_handlers.GetTaskHandler).Methods("GET")
+	api1.HandleFunc("/application", route_handlers.GetTaskHandler).Methods("GET")
+	api1.HandleFunc("/application", route_handlers.CreateTaskHandler).Methods( "POST")
 
+	api1.HandleFunc("/project/{id}", route_handlers.GetTaskHandler).Methods("GET")
+	api1.HandleFunc("/project", route_handlers.GetTaskHandler).Methods("GET")
+	api1.HandleFunc("/project", route_handlers.CreateTaskHandler).Methods( "POST")
+
+	api1.HandleFunc("/task/{id}", route_handlers.GetTaskHandler).Methods("GET")
+	api1.HandleFunc("/task", route_handlers.GetTaskHandler).Methods("GET")
+	api1.HandleFunc("/task", route_handlers.CreateTaskHandler).Methods( "POST")
+
+	api1.HandleFunc("/issue/{id}", route_handlers.GetTaskHandler).Methods("GET")
+	api1.HandleFunc("/issue", route_handlers.GetTaskHandler).Methods("GET")
+	api1.HandleFunc("/issue", route_handlers.CreateTaskHandler).Methods( "POST")
+
+	api1.HandleFunc("/pipeline/{id}", route_handlers.GetTaskHandler).Methods("GET")
+	api1.HandleFunc("/pipeline", route_handlers.GetTaskHandler).Methods("GET")
+	api1.HandleFunc("/pipeline", route_handlers.CreateTaskHandler).Methods( "POST")
+
+	api1.HandleFunc("/team/{id}", route_handlers.GetTaskHandler).Methods("GET")
+	api1.HandleFunc("/team", route_handlers.GetTaskHandler).Methods("GET")
+	api1.HandleFunc("/team", route_handlers.CreateTaskHandler).Methods( "POST")
+
+	api1.HandleFunc("/team_member/{id}", route_handlers.GetTaskHandler).Methods("GET")
+	api1.HandleFunc("/team_member", route_handlers.GetTaskHandler).Methods("GET")
+	api1.HandleFunc("/team_member", route_handlers.CreateTaskHandler).Methods( "POST")
 	return r
 }
 
@@ -113,8 +151,4 @@ func main() {
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hello World!")
-}
-
-func docHandler(w http.ResponseWriter, r *http.Request) {
-
 }

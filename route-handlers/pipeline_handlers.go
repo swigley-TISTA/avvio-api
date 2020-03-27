@@ -11,7 +11,18 @@ import (
 
 var pipelines []models.Pipeline
 
-
+// GetPipelineHandler godoc
+// @Summary Create Pipeline
+// @Description get Pipeline
+// @Accept  json
+// @Produce  json
+// @Param name path string false "search by name"
+// @Success 200 {array} models.Pipeline
+// @Header 200 {string} Token "qwerty"
+// @Failure 400 {object} models.HTTPError
+// @Failure 404 {object} models.HTTPError
+// @Failure 500 {object} models.HTTPError
+// @Router /pipeline [get]
 func GetPipelineHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id := params["id"]
@@ -47,6 +58,18 @@ func filterPipelinesByNamePrefix(pipelines []models.Pipeline, namePrefix string)
 
 }
 
+// CreatePipelineHandler godoc
+// @Summary Create pipelines
+// @Description create pipelines
+// @Accept  json
+// @Produce  json
+// @Param task body models.Pipeline false "pipeline"
+// @Success 200
+// @Header 200 {string} Token "qwerty"
+// @Failure 400 {object} models.HTTPError
+// @Failure 404 {object} models.HTTPError
+// @Failure 500 {object} models.HTTPError
+// @Router /pipeline [post]
 func CreatePipelineHandler(w http.ResponseWriter, r *http.Request) {
 
 	pipeline := models.Pipeline{}

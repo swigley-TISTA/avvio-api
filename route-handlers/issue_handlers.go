@@ -11,7 +11,18 @@ import (
 
 var issues []models.Issue
 
-
+// GetIssueHandler godoc
+// @Summary Create issues
+// @Description get issues
+// @Accept  json
+// @Produce  json
+// @Param name path string false "search by name"
+// @Success 200 {array} models.Issue
+// @Header 200 {string} Token "qwerty"
+// @Failure 400 {object} models.HTTPError
+// @Failure 404 {object} models.HTTPError
+// @Failure 500 {object} models.HTTPError
+// @Router /issue [get]
 func GetIssueHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id := params["id"]
@@ -47,6 +58,18 @@ func filterIssuesByNamePrefix(issues []models.Issue, namePrefix string) []models
 
 }
 
+// CreateIssuenHandler godoc
+// @Summary Create issues
+// @Description create issues
+// @Accept  json
+// @Produce  json
+// @Param task body models.Issue false "issue"
+// @Success 200
+// @Header 200 {string} Token "qwerty"
+// @Failure 400 {object} models.HTTPError
+// @Failure 404 {object} models.HTTPError
+// @Failure 500 {object} models.HTTPError
+// @Router /issue [post]
 func CreateIssueHandler(w http.ResponseWriter, r *http.Request) {
 
 	issue := models.Issue{}

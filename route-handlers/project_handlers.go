@@ -11,7 +11,18 @@ import (
 
 var projects []models.Project
 
-
+// GetProjectHandler godoc
+// @Summary Create projects
+// @Description get projects
+// @Accept  json
+// @Produce  json
+// @Param name path string false "search by name"
+// @Success 200 {array} models.Project
+// @Header 200 {string} Token "qwerty"
+// @Failure 400 {object} models.HTTPError
+// @Failure 404 {object} models.HTTPError
+// @Failure 500 {object} models.HTTPError
+// @Router /project [get]
 func GetProjectHandler(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id := params["id"]
@@ -47,6 +58,18 @@ func filterProjectsByNamePrefix(projects []models.Project, namePrefix string) []
 
 }
 
+// CreateProjectHandler godoc
+// @Summary Create projects
+// @Description create projects
+// @Accept  json
+// @Produce  json
+// @Param task body models.Project false "project"
+// @Success 200
+// @Header 200 {string} Token "qwerty"
+// @Failure 400 {object} models.HTTPError
+// @Failure 404 {object} models.HTTPError
+// @Failure 500 {object} models.HTTPError
+// @Router /project [post]
 func CreateProjectHandler(w http.ResponseWriter, r *http.Request) {
 
 	project := models.Project{}
